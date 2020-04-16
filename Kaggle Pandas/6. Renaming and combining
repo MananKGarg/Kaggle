@@ -1,0 +1,80 @@
+# Renaming and Combining
+
+We can change names of columns, index, entries in pandas. We can also combine data frm multiple dataframes.
+
+## 1. Renaming
+
+* rename() function allows us to change the names of index or columns. For example, to change pioints column to score-
+
+```python
+
+reviews.name(columns={'points':'score'})
+```
+We can change the names of index or columns using index and column keyword. Python dictionary is the most convenient input format. For example -
+
+```python
+
+reviews.rename(index = {0:'firstEntry', 1:'secondEntry'})
+```
+ 
+Generally, for index, instead of rename we use set_index()
+
+*Both the row index and the column index can have their own name attribute. The complimentary rename_axis() method may be used to change these names. For example:
+
+```python
+
+reviews.rename_axis("wines", axis='rows').rename_axis("fields", axis='columns')
+```
+PLEASE EXPLAIN THIS!!!
+
+## 2. Combining
+
+Pandas has three methods to combine. In order of increasing complextity, these methods are concat().join() and merge()
+
+### concat()
+
+Given a list of elements, this function will add them together along an axis. It is useful when we have same columns in different dataframes.
+
+For example, youtube video dataset splits on the basis of country of origin( ex. canada and uk). If we want to study multiple countries simultaneously, we can use concat() function.
+
+```python
+
+canadian_youtube = pd.read_csv("../input/youtube-new/CAvideos.csv")
+british_youtube = pd.read_csv("../input/youtube-new/GBvideos.csv")
+
+pd.concat([canadian_youtube, british_youtube])
+```
+
+### join()
+
+join() lets us combine different DataFrames in which index is common. For example, to pull down the videos that were trending on the same day in canada and uk, we an do
+
+```python
+
+left = canadian_youtube.set_index(['title','trending date'])
+right = british_youtube.set_index(['title','trending date'])
+
+left.join(right, l_suffix = '_CAN', r_suffix = '_UK')
+
+```
+
+The l_suffix and r_suffix parmeters are necessary here because data has same column names in both British and Canadian datasets. If we had renamed them before, there wouldn't have been a nedd for suffixes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
