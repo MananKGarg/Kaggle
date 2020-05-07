@@ -1,1 +1,2 @@
-This the certificate of the python course I completed on Kaggle. My notes for this course are in the Python repository.
+These are the notes of Kaggle Python microcourse. The certificate is also there in the repository.
+
