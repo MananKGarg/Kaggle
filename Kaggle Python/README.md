@@ -1,2 +1,2 @@
-These are the notes of Kaggle Python microcourse. The certificate is also there in the repository.
+These are my notes along with the certificate of Kaggle Python microcourse. 
 
